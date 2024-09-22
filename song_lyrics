@@ -1,0 +1,17 @@
+import lyricsgenius
+
+def get_lyrics(artist, song):
+    genius = lyricsgenius.Genius("YOUR_GENIUS_API_ACCESS_TOKEN")
+    try:
+        song = genius.search_song(song, artist)
+        if song:
+            return song.lyrics
+        else:
+            return "Song or artist not found."
+    except Exception as e:
+        return f"An error occurred: {e}"
+
+artist_name = "Arijit Singh"
+song_title = "Phir Bhi Tumko Chaahunga"
+lyrics = get_lyrics(artist_name, song_title)
+print(lyrics)
